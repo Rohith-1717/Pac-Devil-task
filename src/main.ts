@@ -10,7 +10,7 @@ class Game extends Phaser.Scene{player!: Phaser.Physics.Arcade.Sprite;
   preload(){
     this.load.image("bg", "assets/background.png");
     this.load.image("player", "assets/player.png");
-    this.load.spritesheet("coinSpin", "assets/coins.png", {frameWidth: 384,frameHeight: 1024
+    this.load.spritesheet("CS", "assets/coins.png", {frameWidth: 384,frameHeight: 1024
     });
   }
 
@@ -19,7 +19,7 @@ class Game extends Phaser.Scene{player!: Phaser.Physics.Arcade.Sprite;
     this.player = this.physics.add.sprite(400, 300, "player");
     this.player.setScale(0.1);
     this.cursors = this.input.keyboard.createCursorKeys();
-    this.anims.create({ key: "coin-spin",frames: this.anims.generateFrameNumbers("coinSpin", { start: 0, end: 3 }),
+    this.anims.create({ key: "coin-spin",frames: this.anims.generateFrameNumbers("CS", { start: 0, end: 3 }),
       frameRate: 8, repeat: -1});
 
     this.coins = this.physics.add.group();
@@ -31,7 +31,7 @@ class Game extends Phaser.Scene{player!: Phaser.Physics.Arcade.Sprite;
     positions.push({ x: x, y: y });}
 
   positions.forEach(p=>{
-    const c = this.coins.create(p.x, p.y, "coinSpin"); c.setScale(0.1); c.play("coin-spin");});
+    const c = this.coins.create(p.x, p.y, "CS"); c.setScale(0.1); c.play("coin-spin");});
     this.physics.add.overlap(this.player, this.coins, this.collectCoin as any, undefined, this);
     this.scoreText = this.add.text(650, 550, "Score: 0",{ color: "#fff",fontSize: "20px"});
     this.best = parseInt(localStorage.getItem("bestScore") || "0");
@@ -66,7 +66,7 @@ class Game extends Phaser.Scene{player!: Phaser.Physics.Arcade.Sprite;
     if(this.score > this.best){
       this.best = this.score;
       localStorage.setItem("bestScore", this.best.toString());
-      this.bestText.setText("Best: " + this.best);
+      this.bestText.setText("Best OAT: " + this.best);
     }
   }
 }
