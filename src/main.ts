@@ -10,7 +10,7 @@ class Game extends Phaser.Scene{player!: Phaser.Physics.Arcade.Sprite;
   preload(){
     this.load.image("bg", "assets/background.png");
     this.load.image("player", "assets/player.png");
-    this.load.spritesheet("coinSpin", "assets/coin_sheet.png", {frameWidth: 384,frameHeight: 1024
+    this.load.spritesheet("coinSpin", "assets/coins.png", {frameWidth: 384,frameHeight: 1024
     });
   }
 
